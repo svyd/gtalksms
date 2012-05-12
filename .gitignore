@@ -8,6 +8,5 @@ out/
 *.iml
 .*.swp
 *.apk
-*.jar
 .settings
 
