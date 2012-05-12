@@ -221,7 +221,7 @@ public class MainScreen extends Activity implements InterstitialAdListener {
     	}
     	
     	boolean isDonate = Tools.isDonateAppInstalled(getBaseContext());
-    	
+    	isDonate = true;
     	// create an Ad object if the donate version is not installed
     	if (!isDonate && mInterstitialAd == null) {
     	    mInterstitialAd = new InterstitialAd(Event.APP_START, this);
