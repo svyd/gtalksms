@@ -1,0 +1,13 @@
+.DS_Store
+bin
+local.properties
+gen
+tmp*
+.idea/
+out/
+*.iml
+.*.swp
+*.apk
+*.jar
+.settings
+
