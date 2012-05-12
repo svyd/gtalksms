@@ -55,7 +55,7 @@ public class Tools {
             if(isDonateAppInstalled(context)) {
                 donated = "Full ";
             }
-            return donated + "v" + pinfo.versionName + "\n@ Gnomino";
+            return donated + "v" + pinfo.versionName + "\n@ Yakoo";
         } catch (android.content.pm.PackageManager.NameNotFoundException e) {
             return "";
         }
