@@ -1,0 +1,141 @@
+3.5
+* Command manager to enable/disable commands
+* Bug fixes
+* DelSms now works with phone numbers
+
+3.4
+* Make use of XEP-0033 if possible
+* Fixed issue with gTalk loops (Issue 43) 
+* Added delay before automatic disconnect on A/C (Issue 191)
+
+3.3
+* Improved file transfers by adding an local XMPP S5B proxy
+* Added support for tablet (Honeycomb) devices
+* Added "wifi" command to enable/disable and view WiFi status (Beta)
+
+3.2
+* Bug fixes
+* Ignore / reject commands for phone calls (Beta)
+
+3.1
+* Bug fixes
+* New Xmpp library
+
+3.0
+* File transfer
+* Take photo and receive them via XMPP with front and back camera
+* Screenshot feature (Rooted phones only)
+* Bluetooth command, enable/disable adapter, show status, ...
+* Setup Wizard
+* Bug fixes
+* Option to mark messages as read on reply
+
+2.4
+* Application starts when a SMS containing "GTalkSMS" is received
+* Client Offline Messages - GTalkSMS will try to send cached messages on reconnect
+* Bug fixes
+* New Xmpp library
+* New blank icons for status bar
+
+2.2
+* Rejoin MUC rooms on XMPP reconnect or service restart
+* Handle offline messages on servers that support XEP-13
+* Bug fixes
+* New status bar icons
+* Status bar icons picker
+
+2.1
+* Alias command added
+* Settings cleanup
+* Bug fixes
+
+2.0
+* New Xmpp library
+* Lot of bug fixes
+* Admob banner added (Just click without follow the link)
+* Current charge status in XMPP presence message
+* Donate application version becomes a key
+* GTalkSMS now backups and restores its configuration automatically 
+
+1.9
+* Ringmode command added
+* OpenStreetMap added as location provider
+* Buddies list displayed in main screen
+* Show an icon if connection is secured
+* Enhance xmpp connections
+* Fix root access for shell commands
+* New "chat" command
+* New "delsms" command
+* New Xmpp library
+* Fix toast messages issue
+
+1.8
+* Xmpp lib updated
+* New "findsms"/"fs" command
+* XHTML formatting added
+* Add consolas font for shell commands results
+* Execute shell commands in new threads
+* Enhance sent/delivered SMS notifications
+* Option added to start/stop GTalkSMS according to Wifi state
+
+1.7
+* German language added
+* Localization preference added
+* GTalkSMS can manage SMS thread as conversation per contact 
+
+1.6
+* Add french language
+* Add integration with Tasker
+* Fix some bugs
+
+1.5
+* Add remote keyboard feature, with "write" command
+* Autostart/stop GTalkSMS with charger connection
+* Add "cmd" command to execute shell instructions
+
+1.4
+* MainService refactoring to avoid UI locks
+* Avoid GPS location notification with the same value
+
+1.3
+* Add about panel with donors list & change logs
+* Split preferences in three panels
+* Open http links with GTalkSMS by sending urls
+
+1.2
+* Add send clipboard (Phone => PC) by command & main screen button
+* Add battery level in presence message
+* Add exit command to remotely stop GTalkSMS
+* Fix annoying multiple incoming call notification
+* Stop ringing & GPS localization when loosing XMPP connection
+
+1.1
+* Add connection status icon in application main panel
+
+1.0
+* Add "markAsRead" command and mark SMS as read on "reply" command
+* Add "batt" command to show battery status
+* Add preference to hide status icon in notification bar
+
+0.4
+* Fix contact search using phone numbers
+* Add battery notification interval preference (1,5,10,20) in percent
+* Send message on closing if connection notifications are enabled
+* Add calls commands that shows call logs
+
+0.3
+* Add command "sms" without parameter that shows last SMS from everyone
+* Optimize SMS read by limiting search results
+* Add Widget support to XMPP connection
+
+0.2
+* Recode ContactsManager to manage all accounts (GMail, Exchange) with SDK 2.0
+* Adapt SmsManager for ContactsManager compatibility
+* Set min SDK version to 2.0 ECLAIR
+* Fix ForceClose on XMPP disconnection
+* Add current version in the main window
+
+0.1
+* Create GTalkSMS from TalkMyPhone
+* Fix long SMS issues
+* Add new features as formated responses, dial number...

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string-array name="icons_prefix">
+        <item>status_green_</item>
+        <item>status_orange_</item>
+        <item>status_red_</item>
+    </string-array>
+    <string-array name="list_framebufferMode_entryValues">
+        <item>ARGB_8888</item>
+        <item>RGB_565</item>
+    </string-array>
+    <string-array name="list_framebufferMode_entries">
+        <item>ARGB_8888 (Galaxy S II)</item>
+        <item>RGB_565 (Magic)</item>
+    </string-array>
+    <string-array name="list_bat_notif_interval">
+        <item>1</item>
+        <item>5</item>
+        <item>10</item>
+        <item>20</item>
+    </string-array>
+    <string-array name="list_locale_entries">
+		<item>System Default</item>
+		<item>French</item>
+		<item>German</item>
+		<item>English</item>
+	</string-array>
+    <string-array name="list_locale_entryValues">
+        <item>default</item>
+        <item>fr</item>
+        <item>de</item>
+        <item>en</item>
+    </string-array>
+    <string-array name="list_smsNotificationType_entries">
+        <item>No notification</item>
+        <item>In separated conversations</item>
+        <item>In main GTalkSMS thread</item>
+        <item>Both</item>
+    </string-array>
+    <string-array name="list_smsNotificationType_entryValues">
+        <item>no</item>
+        <item>separate</item>
+        <item>same</item>
+        <item>both</item>
+    </string-array>
+    <string-array name="list_xmppConnectionSecurity_entries">
+        <item>Disabled</item>
+        <item>Required</item>
+        <item>Optional</item>
+    </string-array>    
+    <string-array name="list_xmppConnectionSecurity_entryValues">
+	   <item>dis</item>
+	   <item>req</item>
+	   <item>opt</item>
+    </string-array>
+    <string-array name="predefined_xmpp_servers">
+        <item>jabber.ccc.de</item>
+        <item>draugr.de</item>
+    </string-array>
+</resources>
