@@ -20,12 +20,12 @@
         android:entryValues="@array/list_bat_notif_interval"/>
     <CheckBoxPreference
         android:key="notifyBatteryInStatus"
-        android:defaultValue="true"
+        android:defaultValue="false"
         android:title="@string/pref_notif_battery_state_in_status"
         android:summary="@string/pref_notif_battery_state_in_status_help"/>
     <CheckBoxPreference
         android:key="notifyIncomingCalls"
-        android:defaultValue="true"
+        android:defaultValue="false"
         android:title="@string/pref_notif_incoming_calls"
         android:summary="@string/pref_notif_incoming_calls_help"/>
     <ListPreference 
@@ -37,7 +37,7 @@
         android:defaultValue="same"/>
     <CheckBoxPreference
         android:key="notifySmsSent"
-        android:defaultValue="true"
+        android:defaultValue="false"
         android:title="@string/pref_notif_sms_sent"
         android:summary="@string/pref_notif_sms_sent_help"/>
     <CheckBoxPreference

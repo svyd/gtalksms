@@ -31,7 +31,7 @@
             android:key="password"
             android:title="@string/pref_con_password"
             android:summary="@string/pref_con_password_help" android:password="true"/>
-        <CheckBoxPreference 
+        <!-- <CheckBoxPreference 
             android:key="manuallySpecifyServerSettings" 
             android:defaultValue="true" 
             android:title="@string/pref_con_manually_specify_server_settings" 
@@ -57,9 +57,9 @@
                     android:title="@string/pref_con_service_name" 
                     android:summary="@string/pref_con_service_name_help" 
                     android:inputType="textUri"/>
-            </PreferenceScreen>
+            </PreferenceScreen> -->
     </PreferenceCategory>    
-    <PreferenceScreen android:title="@string/pref_app_advanced">
+    <!-- <PreferenceScreen android:title="@string/pref_app_advanced">
         <EditTextPreference 
             android:key="roomPassword" 
             android:defaultValue="gtalksms" 
@@ -88,5 +88,5 @@
             android:title="@string/pref_con_securityMode" 
             android:summary="@string/pref_con_securityMode_help" />
         
-    </PreferenceScreen>
+    </PreferenceScreen> -->
 </PreferenceScreen>

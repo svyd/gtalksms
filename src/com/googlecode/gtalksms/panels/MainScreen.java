@@ -380,7 +380,7 @@ public class MainScreen extends Activity implements InterstitialAdListener {
             case R.id.connection_settings:
                 prefs_id = R.xml.prefs_connection;
                 break;
-            case R.id.notification_settings:
+            /*case R.id.notification_settings:
                 prefs_id = R.xml.prefs_notifications;
                 break;
             case R.id.application_settings:
@@ -389,7 +389,7 @@ public class MainScreen extends Activity implements InterstitialAdListener {
             case R.id.wizard:
                 intent = new Intent(MainScreen.this, Wizard.class);
                 startActivity(intent);
-                return true;
+                return true;*/
             case R.id.cmd_manager:
                 intent = new Intent(MainScreen.this, CmdManager.class);
                 startActivity(intent);
