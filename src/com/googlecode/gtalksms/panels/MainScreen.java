@@ -283,7 +283,7 @@ public class MainScreen extends Activity implements InterstitialAdListener {
             mInterstitialAd.requestAd(this); // request a new ad
         }
 
-        Button clipboardBtn = (Button) findViewById(R.id.Clipboard);
+        /*Button clipboardBtn = (Button) findViewById(R.id.Clipboard);
         clipboardBtn.setOnClickListener(new OnClickListener() {
 
             public void onClick(View v) {
@@ -294,7 +294,7 @@ public class MainScreen extends Activity implements InterstitialAdListener {
                     startService(intent);
                 }
             }
-        });
+        });*/
 
         Button startStopButton = (Button) findViewById(R.id.StartStop);
         startStopButton.setOnClickListener(new OnClickListener() {
