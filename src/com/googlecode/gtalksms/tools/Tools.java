@@ -150,7 +150,8 @@ public class Tools {
     }
     
     public final static boolean isDonateAppInstalled(Context context) {
-        return 0 == context.getPackageManager().checkSignatures( context.getPackageName(), "com.googlecode.gtalksmsdonate");
+    	return true;
+        //return 0 == context.getPackageManager().checkSignatures( context.getPackageName(), "com.googlecode.gtalksmsdonate");
     }
     
     public final static boolean copyFile(File from, File to) {
