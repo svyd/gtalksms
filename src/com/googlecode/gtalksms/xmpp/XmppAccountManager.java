@@ -82,7 +82,10 @@ public class XmppAccountManager {
         editor.putString("notifiedAddress", notifiedAddress);
         editor.putString("xmppSecurityMode", "opt");
         editor.putBoolean("useCompression", false);
-        editor.putBoolean("manuallySpecifyServerSettings", false);
+        editor.putBoolean("manuallySpecifyServerSettings", true);
+        editor.putString("serverHost", "talk.google.com");
+        editor.putInt("serverPort", 5222);
+        editor.putString("serviceName", "gmail.com");
         editor.putString("login", jid);
         editor.putString("password", password);
         

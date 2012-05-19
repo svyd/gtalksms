@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.HashMap;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.method.LinkMovementMethod;
@@ -59,16 +60,21 @@ public class About extends Activity {
 
         updateConsole();
         
-        if (mUrlMap == null) {
+        /*if (mUrlMap == null) {
             AboutUrlToStringDownloader ausd = new AboutUrlToStringDownloader();
             ausd.execute(sUrls);
-        }
+        }*/
     }
     
     public void updateConsole() {
       TextView console = (TextView) findViewById(R.id.Text);
       console.setText("");
-      console.append(StringFmt.Fmt(getString(R.string.about_website) + "\n", 0xFFFF0000, 1.5, Typeface.BOLD));
+      console.append(StringFmt.Fmt(getString(R.string.about_name) + "\n", 0xFFFF0000, 1.3, Typeface.BOLD));
+      console.append(StringFmt.Fmt(getString(R.string.about_department) + "\n\n", Color.LTGRAY, 1.0, Typeface.NORMAL));
+      console.append(StringFmt.Fmt("Student:" + "\n", Color.LTGRAY, 1.0, Typeface.NORMAL));
+      console.append(StringFmt.Fmt("Svydenko Valerij" + "\n\n", Color.GREEN, 1.2, Typeface.BOLD_ITALIC));
+      console.append(StringFmt.Fmt("June, 2012", Color.LTGRAY, 1.0, Typeface.NORMAL));
+      /*console.append(StringFmt.Fmt(getString(R.string.about_website) + "\n", 0xFFFF0000, 1.5, Typeface.BOLD));
       console.append(StringFmt.Url("http://code.google.com/p/gtalksms"));
       console.append(StringFmt.Fmt("\n\n" + getString(R.string.about_authors) + "\n", 0xFFFF0000, 1.5, Typeface.BOLD));
       console.append(appendURL(AUTHORS_URL));
@@ -76,12 +82,12 @@ public class About extends Activity {
       console.append(appendURL(DONORS_URL));
       console.append(StringFmt.Fmt("\n" + getString(R.string.about_change_log) + "\n", 0xFFFF0000, 1.5, Typeface.BOLD));
       console.append(appendURL(CHANGELOG_URL));
-      
-      MovementMethod m = console.getMovementMethod();
+      */
+      /*MovementMethod m = console.getMovementMethod();
       if ((m == null) || !(m instanceof LinkMovementMethod))
       {
           console.setMovementMethod(LinkMovementMethod.getInstance());
-      }
+      }*/
     }
     
     private String appendURL(String urlString) {

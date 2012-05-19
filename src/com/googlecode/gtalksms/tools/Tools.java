@@ -25,8 +25,8 @@ import com.googlecode.gtalksms.SettingsManager;
 import com.googlecode.gtalksms.xmpp.XmppMsg;
 
 public class Tools {
-    public final static String LOG_TAG = "gtalksms";
-    public final static String APP_NAME = "GTalkSMS";
+    public final static String LOG_TAG = "XMPPremote";
+    public final static String APP_NAME = "XMPPremote";
     public final static String LineSep = System.getProperty("line.separator");
     public final static int shortenTo = 35;
     
@@ -53,9 +53,10 @@ public class Tools {
             String donated = "";
             
             if(isDonateAppInstalled(context)) {
-                donated = "Full ";
+                //donated = "Full ";
+                donated = "";
             }
-            return donated + "v" + pinfo.versionName + "\n@ Yakoo";
+            return donated + "v" + pinfo.versionName;
         } catch (android.content.pm.PackageManager.NameNotFoundException e) {
             return "";
         }
