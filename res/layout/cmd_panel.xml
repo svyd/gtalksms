@@ -8,7 +8,7 @@
     android:layout_height="fill_parent" >
     
     
-    <com.admob.android.ads.AdView
+    <!-- <com.admob.android.ads.AdView
         android:id="@+id/AdView" 
         android:layout_width="fill_parent" 
         android:layout_height="wrap_content"
@@ -16,7 +16,7 @@
         app:backgroundColor="#000000"
         app:primaryTextColor="#FFFFFF"
         app:secondaryTextColor="#CCCCCC"
-        app:keywords="@string/main_but_donate"/>
+        app:keywords="@string/main_but_donate"/> -->
     
     <TextView
         android:id="@+id/TextView" 

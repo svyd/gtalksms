@@ -83,9 +83,6 @@ public class XmppAccountManager {
         editor.putString("xmppSecurityMode", "opt");
         editor.putBoolean("useCompression", false);
         editor.putBoolean("manuallySpecifyServerSettings", true);
-        editor.putString("serverHost", "talk.google.com");
-        editor.putInt("serverPort", 5222);
-        editor.putString("serviceName", "gmail.com");
         editor.putString("login", jid);
         editor.putString("password", password);
         
@@ -95,6 +92,16 @@ public class XmppAccountManager {
             useDifferentAccount = true;
         }
         editor.putBoolean("useDifferentAccount", useDifferentAccount);
+        
+        editor.commit();
+    }
+    
+    public static void saveCredentialsPreferences(SettingsManager settings) {
+    	Editor editor = settings.getEditor();
+    	
+    	editor.putString("serverHost", "talk.google.com");
+        editor.putInt("serverPort", 5222);
+        editor.putString("serviceName", "gmail.com");
         
         editor.commit();
     }

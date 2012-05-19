@@ -17,6 +17,7 @@ import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -44,6 +45,7 @@ import com.googlecode.gtalksms.XmppManager;
 import com.googlecode.gtalksms.panels.wizard.Wizard;
 import com.googlecode.gtalksms.tools.StringFmt;
 import com.googlecode.gtalksms.tools.Tools;
+import com.googlecode.gtalksms.xmpp.XmppAccountManager;
 import com.googlecode.gtalksms.xmpp.XmppFriend;
 
 public class MainScreen extends Activity implements InterstitialAdListener {
@@ -198,6 +200,9 @@ public class MainScreen extends Activity implements InterstitialAdListener {
         mSettingsMgr = SettingsManager.getSettingsManager(this);
 //        MenuItem mi = (MenuItem) findViewById(R.id.wizard);
 //        mi.setEnabled(false);
+        if(TextUtils.isEmpty(mSettingsMgr.serverHost)){
+        	XmppAccountManager.saveCredentialsPreferences(mSettingsMgr);
+        }
         createView();
         
         if (!Tools.isDonateAppInstalled(this)) {

@@ -66,8 +66,8 @@ public class CmdManager extends Activity implements InterstitialAdListener {
                 mInterstitialAd.show(this);
             }
             
-            AdView ad = (AdView) findViewById(R.id.AdView);
-            ad.setAdListener(new SimpleAdListener());
+            /*AdView ad = (AdView) findViewById(R.id.AdView);
+            ad.setAdListener(new SimpleAdListener());*/
         }
         
         mTextView = (TextView)findViewById(R.id.TextView);
@@ -110,6 +110,7 @@ public class CmdManager extends Activity implements InterstitialAdListener {
                 });
             
             CmdListAdapter adapter = new CmdListAdapter(this, R.layout.cmd_item, cmds.toArray(new Cmd[cmds.size()]));
+            mListView.setAdapter(null);
             mListView.setAdapter(adapter);
             mListView.setVisibility(View.VISIBLE);
             mTextView.setVisibility(View.GONE);
