@@ -18,19 +18,20 @@
         <CheckBoxPreference
             android:key="useDifferentAccount"
             android:defaultValue="false"
-            android:title="@string/pref_con_use_different_account"
-            android:summary="@string/pref_con_use_different_account_help" />
+            android:title="@string/pref_con_use_different_account"/>
+            <!-- android:summary="@string/pref_con_use_different_account_help" --> 
         <EditTextPreference
             android:key="login"
             android:defaultValue="your.login"
             android:dependency="useDifferentAccount"
             android:title="@string/pref_con_login"
-            android:summary="@string/pref_con_login_help"
             android:inputType="textEmailAddress"/>
+        <!-- android:summary="@string/pref_con_login_help" -->
         <EditTextPreference
             android:key="password"
             android:title="@string/pref_con_password"
-            android:summary="@string/pref_con_password_help" android:password="true"/>
+            android:password="true"/>
+           <!--  android:summary="@string/pref_con_password_help" --> 
         <!-- <CheckBoxPreference 
             android:key="manuallySpecifyServerSettings" 
             android:defaultValue="true" 

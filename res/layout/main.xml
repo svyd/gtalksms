@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout 
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res/com.googlecode.gtalksms"
+    xmlns:app="http://schemas.android.com/apk/res/com.googlecode.xmppremote"
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent" >
     
-    <com.admob.android.ads.AdView
+    <!-- <com.admob.android.ads.AdView
         android:id="@+id/ad" 
         android:layout_width="fill_parent" 
         android:layout_height="wrap_content"
@@ -14,7 +14,7 @@
         app:backgroundColor="#000000"
         app:primaryTextColor="#FFFFFF"
         app:secondaryTextColor="#CCCCCC"
-        app:keywords="@string/main_but_donate"/>
+        app:keywords="@string/main_but_donate"/> -->
         
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                   android:orientation="horizontal"
@@ -69,7 +69,7 @@
                   android:orientation="horizontal"
                   android:layout_width="fill_parent"
                   android:layout_height="wrap_content" >
-	    <Button 
+	    <!-- <Button 
 	        android:text="@string/main_but_donate" 
 	        android:id="@+id/Donate"
 	        android:layout_weight=".5"
@@ -86,7 +86,7 @@
 	        android:layout_width="fill_parent"
 	        android:fitsSystemWindows="true" 
             android:gravity="center" 
-            android:layout_gravity="center" />
+            android:layout_gravity="center" /> -->
     </LinearLayout>
     
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"

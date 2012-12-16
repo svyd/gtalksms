@@ -34,7 +34,7 @@
         android:summary="@string/pref_notif_incoming_sms_help" 
         android:entryValues="@array/list_smsNotificationType_entryValues" 
         android:entries="@array/list_smsNotificationType_entries" 
-        android:defaultValue="same"/>
+        android:defaultValue="no"/>
     <CheckBoxPreference
         android:key="notifySmsSent"
         android:defaultValue="false"
