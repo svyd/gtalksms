@@ -191,8 +191,6 @@ public class MainScreen extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mSettingsMgr = SettingsManager.getSettingsManager(this);
-//        MenuItem mi = (MenuItem) findViewById(R.id.wizard);
-//        mi.setEnabled(false);
         if(TextUtils.isEmpty(mSettingsMgr.serverHost)){
         	XmppAccountManager.saveCredentialsPreferences(mSettingsMgr);
         }
@@ -211,9 +209,6 @@ public class MainScreen extends Activity {
     	if (mSettingsMgr.connectOnMainscreenShow) {
     	    Tools.startSvcIntent(this, MainService.ACTION_CONNECT);
     	}
-    	
-    	boolean isDonate = Tools.isDonateAppInstalled(getBaseContext());
-    	isDonate = true;
     	
         Tools.setLocale(mSettingsMgr, this);
         
@@ -294,14 +289,6 @@ public class MainScreen extends Activity {
         mBuddiesListView.setAdapter(mSchedule);
     }
 
-    /** lets the user choose an activity compatible with the url */
-    private void openLink(String url) {
-        Intent target = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-        Intent intent = Intent.createChooser(target, getString(R.string.chat_choose_activity));
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
-    }
-
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         // Force menu update on each opening for localization issue
@@ -323,16 +310,6 @@ public class MainScreen extends Activity {
             case R.id.connection_settings:
                 prefs_id = R.xml.prefs_connection;
                 break;
-            /*case R.id.notification_settings:
-                prefs_id = R.xml.prefs_notifications;
-                break;
-            case R.id.application_settings:
-                prefs_id = R.xml.prefs_application;
-                break;
-            case R.id.wizard:
-                intent = new Intent(MainScreen.this, Wizard.class);
-                startActivity(intent);
-                return true;*/
             case R.id.cmd_manager:
                 intent = new Intent(MainScreen.this, CmdManager.class);
                 startActivity(intent);
@@ -348,10 +325,6 @@ public class MainScreen extends Activity {
 
     @Override
     public boolean onKeyLongPress(int keyCode, KeyEvent event) {
-        // Note: KEYCODE_MENU was my first preference, but I failed to make that work.
-        // Also: once we have more diagnostic features, it probably makes
-        // sense to create a new panel and have the log collector called from
-        // there - but now, just jumping directly to the collector should be fine.
         if (keyCode == KeyEvent.KEYCODE_BACK) {
             Intent i = new Intent(this, LogCollector.class);
             startActivity(i);
