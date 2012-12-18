@@ -1,6 +1,5 @@
 package com.googlecode.xmppremote.xmpp;
 
-import com.googlecode.xmppremote.tools.GoogleAnalyticsHelper;
 
 public class XmppFriend {
     
@@ -38,7 +37,6 @@ public class XmppFriend {
         case OFFLINE:
             return "Offline";
         default:
-            GoogleAnalyticsHelper.trackAndLogError("XMPP Friend state unknown: " + state);
             return "unkown";
         }
     }

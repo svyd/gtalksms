@@ -15,8 +15,8 @@ public class EmailCallback extends ExtentedPictureCallback {
     @Override
     protected boolean onPictureSaved(File picture) {
         Intent emailIntent = new Intent(Intent.ACTION_SEND);
-        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "GTalkSMS Picture");
-        emailIntent.putExtra(Intent.EXTRA_TEXT, "GTalkSMS Picture");
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "xmppremote Picture");
+        emailIntent.putExtra(Intent.EXTRA_TEXT, "xmppremote Picture");
         emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[] { recipient });
         emailIntent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(picture));
         emailIntent.setType("image/jpeg");

@@ -7,7 +7,6 @@ import org.jivesoftware.smackx.XHTMLText;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.googlecode.xmppremote.tools.GoogleAnalyticsHelper;
 import com.googlecode.xmppremote.tools.Tools;
 
 public class XmppMsg implements Parcelable {
@@ -213,7 +212,6 @@ public class XmppMsg implements Parcelable {
                 XmppFont font = fonts.remove(0);
                 x.appendOpenSpanTag(font.toString());
             } else {
-                GoogleAnalyticsHelper.trackAndLogError("XmppMsg.generateXhtml: Font tags doesn't match");
                 x.appendOpenSpanTag("font:null");   
             }
             msg.delete(0, FONT_BEGIN.length());

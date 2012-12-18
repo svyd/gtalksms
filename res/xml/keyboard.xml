@@ -5,6 +5,6 @@
     android:verticalGap="0px"
     android:keyHeight="50dip" >
     <Row>
-        <Key android:codes="-1" android:keyLabel="GTalkSMS by Yakoo" android:keyWidth="100%p"/>
+        <Key android:codes="-1" android:keyLabel="XMPPREMOTE" android:keyWidth="100%p"/>
     </Row>        
 </Keyboard>

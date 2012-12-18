@@ -33,7 +33,6 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Handler;
 
-import com.googlecode.xmppremote.tools.GoogleAnalyticsHelper;
 import com.googlecode.xmppremote.tools.Tools;
 import com.googlecode.xmppremote.xmpp.ChatPacketListener;
 import com.googlecode.xmppremote.xmpp.ClientOfflineMessages;
@@ -325,15 +324,6 @@ public class XmppManager {
     }
 
     private void xmppDisconnect(XMPPConnection connection) {
-        // In some cases the 'disconnect' may hang - see
-        // http://code.google.com/p/gtalksms/issues/detail?id=12 for an
-        // example.  We worm around this by leveraging the fact that we 
-        // are going to throw the XmppConnection away after disconnecting,
-        // so just spawn a thread to perform the disconnection.  In the
-        // usual good case the thread will terminate very quickly, and 
-        // in the bad case the thread may hang around much longer - but 
-        // at least we are still working and it should go away 
-        // eventually...
         class DisconnectRunnable implements Runnable {
             private XMPPConnection con;
 
@@ -357,7 +347,6 @@ public class XmppManager {
                     float diff = stop - start;
                     diff = diff / 1000;
                     Log.i("disconnectED xmpp connection. Took: " + diff + " s");
-                    GoogleAnalyticsHelper.trackDisconTime(diff);
                 }
             }
         }
@@ -557,7 +546,6 @@ public class XmppManager {
                 mConnection.getRoster().setSubscriptionMode(Roster.SubscriptionMode.manual);
                 mXmppBuddies.retrieveFriendList();
             } catch (Exception ex) {
-                GoogleAnalyticsHelper.trackAndLogError("Failed to setup XMPP friend list roster.", ex);
             }
 
             // It is important that we query the server for offline messages
@@ -566,7 +554,6 @@ public class XmppManager {
         } catch (Exception e) {
             // see issue 126 for an example where this happens because
             // the connection drops while we are in initConnection()
-            GoogleAnalyticsHelper.trackAndLogError("xmppMgr exception caught", e);
             maybeStartReconnect();
             return;
         }
@@ -603,9 +590,6 @@ public class XmppManager {
             connection.connect();
         } catch (Exception e) {
             Log.w("xmpp connection failed: " + e.getMessage());
-            // "No response from server" usually means that the connection is somehow in an undefined state
-            // so we throw away the XMPPConnection by null-ing it
-            // see also issue 133 - http://code.google.com/p/gtalksms/issues/detail?id=133
             if (e.getMessage() != null && e.getMessage().startsWith("Connection failed. No response from server")) {
                 Log.w("xmpp connection in an unusable state, marking it as obsolete", e);
                 mConnection = null;
@@ -631,7 +615,7 @@ public class XmppManager {
         XHTMLManager.setServiceEnabled(connection, false);   
         serviceDiscoMgr.addFeature("http://jabber.org/protocol/disco#info");
         serviceDiscoMgr.addFeature("http://jabber.org/protocol/muc");
-        serviceDiscoMgr.addFeature("bug-fix-gtalksms");
+        serviceDiscoMgr.addFeature("bug-fix-xmppremote");
         
         try {
             connection.login(mSettings.login, mSettings.password, Tools.APP_NAME);

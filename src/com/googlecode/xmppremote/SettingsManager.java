@@ -16,7 +16,7 @@ import android.util.Log;
 import com.googlecode.xmppremote.tools.Tools;
 /**
  * 
- * @author GTalkSMS Team
+ * @author 
  * 
  * In order to work flawlessly with the BackupAgent
  * ALL settings in SettingsManager have to be of the same type

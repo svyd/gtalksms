@@ -4,14 +4,13 @@ import java.io.File;
 
 import com.googlecode.xmppremote.XmppManager;
 import com.googlecode.xmppremote.databases.KeyValueHelper;
-import com.googlecode.xmppremote.tools.GoogleAnalyticsHelper;
 
 import android.content.Context;
 
 /**
  * This class provides an interface to the keyValue database
  * the last known state of the XMPP connection is saved. This helps
- * MainService to detect an unintentional restart of GTalkSMS and restore 
+ * MainService to detect an unintentional restart of xmppremote and restore 
  * the last known state.
  *
  */
@@ -56,7 +55,6 @@ public class XmppStatus {
             try {
                 res = Integer.parseInt(value);
             } catch(NumberFormatException e) { 
-                GoogleAnalyticsHelper.trackAndLogError("XmppStatus unable to parse integer", e);
             }
         }
         return res;        

@@ -15,7 +15,7 @@ import com.googlecode.xmppremote.MainService;
  * Maybe this works on some custom ROMs, so I let this in as hidden
  * command.
  * 
- * @author Florian Schmaus fschmaus@gmail.com - on behalf of the GTalkSMS Team
+ * @author
  *
  */
 public class RebootCmd extends CommandHandlerBase {

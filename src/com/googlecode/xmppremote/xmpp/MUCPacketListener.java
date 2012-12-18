@@ -15,11 +15,10 @@ import android.content.Intent;
 import com.googlecode.xmppremote.Log;
 import com.googlecode.xmppremote.MainService;
 import com.googlecode.xmppremote.SettingsManager;
-import com.googlecode.xmppremote.tools.GoogleAnalyticsHelper;
 
 class MUCPacketListener implements PacketListener {
 	private String mNumber;
-	private String mName; // the name of GTalkSMS in this room
+	private String mName; // the name of xmppremote in this room
 	private Date mLastDate;
 	private MultiUserChat mMuc;
 	private String mRoomName;
@@ -103,7 +102,6 @@ class MUCPacketListener implements PacketListener {
     					Log.w("MUCPacketListener: Received old message: date="
     							+ sentDate.toLocaleString() + " ; message="
     							+ message.getBody());
-    					GoogleAnalyticsHelper.trackAndLogError("MUCPacketListener: Received old message");
     				}
     			}
 	        } else {

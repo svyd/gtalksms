@@ -39,12 +39,6 @@ public class GeoCmd extends CommandHandlerBase {
         if (addresses != null) {
             if (addresses.size() > 1) {
                 XmppMsg addr = new XmppMsg(getString(R.string.chat_specify_details));
-                /*addr.newLine();
-                for (Address address : addresses) {
-                    for (int i = 0; i < address.getMaxAddressLineIndex(); i++) {
-                        addr.appendLine(address.getAddressLine(i));
-                    }
-                }*/
                 send(addr);
             } else if (addresses.size() == 1) {
                 launchExternal(addresses.get(0).getLatitude() + "," + addresses.get(0).getLongitude());

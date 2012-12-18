@@ -33,11 +33,6 @@ import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
 
-import com.admob.android.ads.AdView;
-import com.admob.android.ads.InterstitialAd;
-import com.admob.android.ads.InterstitialAdListener;
-import com.admob.android.ads.SimpleAdListener;
-import com.admob.android.ads.InterstitialAd.Event;
 import com.googlecode.xmppremote.MainService;
 import com.googlecode.xmppremote.R;
 import com.googlecode.xmppremote.SettingsManager;
@@ -48,10 +43,8 @@ import com.googlecode.xmppremote.tools.Tools;
 import com.googlecode.xmppremote.xmpp.XmppAccountManager;
 import com.googlecode.xmppremote.xmpp.XmppFriend;
 
-public class MainScreen extends Activity implements InterstitialAdListener {
+public class MainScreen extends Activity {
 
-    /** AdMob Interstitial Ad */
-    private InterstitialAd mInterstitialAd;
     
     private MainService mMainService;
     private SettingsManager mSettingsMgr;
@@ -205,12 +198,6 @@ public class MainScreen extends Activity implements InterstitialAdListener {
         }
         createView();
         
-        if (!Tools.isDonateAppInstalled(this)) {
-            if (mInterstitialAd == null) {
-                mInterstitialAd = new InterstitialAd(Event.APP_START, this);
-            }
-            mInterstitialAd.requestAd(this);
-        }
     }
 
     /** Called when the activity is first created. */
@@ -227,10 +214,6 @@ public class MainScreen extends Activity implements InterstitialAdListener {
     	
     	boolean isDonate = Tools.isDonateAppInstalled(getBaseContext());
     	isDonate = true;
-    	// create an Ad object if the donate version is not installed
-    	if (!isDonate && mInterstitialAd == null) {
-    	    mInterstitialAd = new InterstitialAd(Event.APP_START, this);
-    	}
     	
         Tools.setLocale(mSettingsMgr, this);
         
@@ -255,52 +238,7 @@ public class MainScreen extends Activity implements InterstitialAdListener {
             }
         });
 
-        if (mInterstitialAd != null && mInterstitialAd.isReady()) {
-            mInterstitialAd.show(this);
-        }
         
-        //AdView ad = (AdView) findViewById(R.id.ad);
-        //ad.setAdListener(new SimpleAdListener());
-        
-        /*Button donateBtn = (Button) findViewById(R.id.Donate);
-        donateBtn.setOnClickListener(new OnClickListener() {
-            public void onClick(View v) {
-                openLink("https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=WQDV6S67WAC7A&lc=US&item_name=GTalkSMS&item_number=WEB&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted");
-            }
-        });
-        
-        Button marketBtn = (Button) findViewById(R.id.Market);
-        marketBtn.setOnClickListener(new OnClickListener() {
-            public void onClick(View v) {
-                openLink("market://details?id=com.googlecode.gtalksmsdonate");
-            }
-        });*/
-
-        // Set FREE label for not donate version
-        /*if (isDonate) {
-            ad.setVisibility(View.GONE);
-            donateBtn.setVisibility(View.GONE);
-            marketBtn.setVisibility(View.GONE);
-        } else {
-            ad.setVisibility(View.VISIBLE);
-            donateBtn.setVisibility(View.VISIBLE);
-            marketBtn.setVisibility(View.VISIBLE);
-            mInterstitialAd.requestAd(this); // request a new ad
-        }*/
-
-        /*Button clipboardBtn = (Button) findViewById(R.id.Clipboard);
-        clipboardBtn.setOnClickListener(new OnClickListener() {
-
-            public void onClick(View v) {
-                if (MainService.IsRunning) {
-                    Intent intent = new Intent(MainService.ACTION_COMMAND);
-                    intent.putExtra("cmd", "copy");
-                    intent.setClassName("com.googlecode.gtalksms", "com.googlecode.gtalksms.MainService");
-                    startService(intent);
-                }
-            }
-        });*/
-
         Button startStopButton = (Button) findViewById(R.id.StartStop);
         startStopButton.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
@@ -422,12 +360,4 @@ public class MainScreen extends Activity implements InterstitialAdListener {
         return super.onKeyLongPress(keyCode, event);
     }
 
-    public void onFailedToReceiveInterstitial(InterstitialAd interstitialAd) {}
-
-    public void onReceiveInterstitial(InterstitialAd interstitialAd) {
-        if(mSettingsMgr.debugLog) Log.i(Tools.LOG_TAG, "onReceiveInterstitial");
-        if(interstitialAd == mInterstitialAd) {
-            mInterstitialAd.show(this);
-        }
-    }
 }

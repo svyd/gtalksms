@@ -75,7 +75,7 @@ public class LogCollector extends Activity {
         try {
             Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
             emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, Tools.APP_NAME + " log - Issue 000");
-            emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[] {"gtalksms-logs@googlegroups.com"});
+            emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[] {"xmppremote-logs@googlegroups.com"});
             emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, logString);
             emailIntent.setType("text/plain");
             startActivity(emailIntent);
@@ -92,7 +92,7 @@ public class LogCollector extends Activity {
         list.add("time");
         // filters.
         list.add("AndroidRuntime:E");
-        list.add("gtalksms:V");
+        list.add("xmppremote:V");
         list.add("*:S");
         mCollectLogTask = (CollectLogTask) new CollectLogTask().execute(list);
     }

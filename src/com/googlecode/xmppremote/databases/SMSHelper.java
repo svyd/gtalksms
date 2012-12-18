@@ -1,7 +1,6 @@
 package com.googlecode.xmppremote.databases;
 
 import com.googlecode.xmppremote.cmd.smsCmd.Sms;
-import com.googlecode.xmppremote.tools.GoogleAnalyticsHelper;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -9,7 +8,7 @@ import android.content.Context;
 /**
  * Middle-end helper. Adds and restores SMS to the database backend.
  * 
- * @author Florian Schmaus fschmaus@gmail.com - on behalf of the GTalkSMS Team
+ * @author
  *
  */
 public class SMSHelper {	
@@ -83,12 +82,7 @@ public class SMSHelper {
             if (partNum < sentIntent.length) {
                 sentIntent[partNum] = 'X';
                 SMSDatabase.putSentIntent(smsID, sentIntent.toString());
-            } else {
-                GoogleAnalyticsHelper.trackAndLogError("SMSHelper.setSentIntent() OutOfBounds: " +
-                		"partNum=" + partNum +
-                		" length=" + sentIntent.length +
-                		" sentIntentSTr= " + sentIntentStr);
-            }
+            } 
         } // TODO handle null case
     }
 
@@ -100,12 +94,7 @@ public class SMSHelper {
             if (partNum < delIntent.length) {
                 delIntent[partNum] = 'X';
                 SMSDatabase.putDelIntent(smsID, delIntent.toString());
-            } else {
-                GoogleAnalyticsHelper.trackAndLogError("SMSHelper.setSentIntent() OutOfBounds: " +
-                        "partNum=" + partNum +
-                        " length=" + delIntent.length +
-                        " sentIntentSTr= " + delIntentStr);
-            }
+            } 
         } // TODO handle null case
     }       
 }

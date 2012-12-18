@@ -5,7 +5,6 @@ import java.util.Map;
 import com.googlecode.xmppremote.MainService;
 import com.googlecode.xmppremote.R;
 import com.googlecode.xmppremote.databases.SMSHelper;
-import com.googlecode.xmppremote.tools.GoogleAnalyticsHelper;
 
 import android.app.Activity;
 import android.content.Context;
@@ -57,7 +56,6 @@ public class SentIntentReceiver extends SmsPendingIntentReceiver {
     @Override
     public void onReceiveWithoutSms(Context context, int partNum, int res) {
         answerTo = null;
-        GoogleAnalyticsHelper.trackAndLogWarning("sms in smsMap missing");
         switch (res) {
         case Activity.RESULT_OK:
             send(context.getString(R.string.chat_sms_sent));

@@ -34,7 +34,7 @@
     <string-array name="list_smsNotificationType_entries">
         <item>No notification</item>
         <item>In separated conversations</item>
-        <item>In main GTalkSMS thread</item>
+        <item>In main XMPPREMOTE thread</item>
         <item>Both</item>
     </string-array>
     <string-array name="list_smsNotificationType_entryValues">

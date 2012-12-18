@@ -14,7 +14,7 @@ import android.content.Context;
 import java.text.ParseException;
 
 /**
- * A helper that counts the starts of GTalkSMS after a crash
+ * A helper that counts the starts of xmppremote after a crash
  *
  */
 public class CrashedStartCounter {

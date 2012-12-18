@@ -10,7 +10,7 @@ import android.database.Cursor;
  * Backend Class for the SMSDatabase
  * allows manipulation of the database
  * 
- * @author Florian Schmaus fschmaus@gmail.com - on behalf of the GTalkSMS Team
+ * @author
  *
  */
 public class SMSDatabase extends Database {

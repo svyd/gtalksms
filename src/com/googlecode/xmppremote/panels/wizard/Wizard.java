@@ -31,7 +31,7 @@ import com.googlecode.xmppremote.tools.Tools;
  * only difference is that with "Same Account" the notification address is 
  * set as login and the editText field is made unchangeable
  * 
- * @author Florian Schmaus fschmaus@gmail.com - on behalf of the GTalkSMS Team
+ * @author 
  *
  */
 public class Wizard extends Activity {
@@ -249,7 +249,7 @@ public class Wizard extends Activity {
                 login = (Button) findViewById(R.id.loginBut);
                 textLogin = (EditText) findViewById(R.id.login);
                 textPassword1 = (EditText) findViewById(R.id.password1);
-                // the user wants to use the same account for notification and gtalksms
+                // the user wants to use the same account for notification and xmppremote
                 // so just enter as login the notificationAddress
                 String loginStr = mNotifiedAddress;
                 textLogin.setEnabled(false);

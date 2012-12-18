@@ -152,7 +152,6 @@ public class Tools {
     
     public final static boolean isDonateAppInstalled(Context context) {
     	return true;
-        //return 0 == context.getPackageManager().checkSignatures( context.getPackageName(), "com.googlecode.gtalksmsdonate");
     }
     
     public final static boolean copyFile(File from, File to) {
@@ -277,7 +276,7 @@ public class Tools {
     }
     
     /**
-     * Composes a new intent for the GTalkSMS MainService
+     * Composes a new intent for the xmppremote MainService
      * 
      * @param ctx
      * @param action
@@ -297,7 +296,7 @@ public class Tools {
     }
     
     /**
-     * Starts the GTalkSMS Service with an XMPP Message Received intent
+     * Starts the xmppremote Service with an XMPP Message Received intent
      * 
      * @param ctx
      * @param message

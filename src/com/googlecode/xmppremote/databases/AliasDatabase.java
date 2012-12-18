@@ -8,7 +8,7 @@ import android.database.Cursor;
  * Backend Class for the Alias Feature
  * allows manipulation of the database for aliases
  * 
- * @author Florian Schmaus fschmaus@gmail.com - on behalf of the GTalkSMS Team
+ * @author Ê 
  *
  */
 public class AliasDatabase extends Database {

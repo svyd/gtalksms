@@ -197,7 +197,7 @@ public abstract class CommandHandlerBase {
     
     /**
      * Setups the command to get working. Usually called when the user want's 
-     * GTalkSMS to be active (meaning connected)
+     * xmppremote to be active (meaning connected)
      * setup() the contrary to cleanUp()
      */
     public void setup() {};

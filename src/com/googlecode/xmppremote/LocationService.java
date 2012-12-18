@@ -20,7 +20,6 @@ import android.os.IBinder;
 import android.provider.Settings;
 import android.util.Log;
 
-import com.googlecode.xmppremote.tools.GoogleAnalyticsHelper;
 import com.googlecode.xmppremote.tools.Tools;
 import com.googlecode.xmppremote.xmpp.XmppMsg;
 
@@ -47,9 +46,6 @@ public class LocationService extends Service {
         _settingsManager = SettingsManager.getSettingsManager(this);
     }
 
-    /*
-     * http://www.maximyudin.com/2008/12/07/android/vklyuchenievyklyuchenie-gps-na-g1-programmno/
-     */
     private boolean getGPSStatus() {
         String allowedLocationProviders = Settings.System.getString(getContentResolver(), Settings.System.LOCATION_PROVIDERS_ALLOWED);
         if (allowedLocationProviders == null) {
@@ -79,10 +75,8 @@ public class LocationService extends Service {
                 m.setAccessible(true);
                 m.invoke(_locationManager, new Object[] {});
             } catch (Exception e) {
-                GoogleAnalyticsHelper.trackAndLogWarning("LocationService.setGPSStatus() exception on Android SDK Level: " + Build.VERSION.SDK_INT, e);
                 throw e;
             }
-        // use the secuirty hole from http://code.google.com/p/android/issues/detail?id=7890
         } else {
             // the GPS is not in the requested state
             if (!allowedLocationProviders.contains("gps") == newGPSStatus) {                

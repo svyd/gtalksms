@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DatabaseOpenHelper extends SQLiteOpenHelper {
     
-    /* general database version gtalksms uses */
+    /* general database version xmppremote uses */
     private static final int DATABASE_VERSION = 4;
     
     /* information for the alias database */

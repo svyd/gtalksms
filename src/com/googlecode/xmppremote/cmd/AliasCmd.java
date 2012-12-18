@@ -12,7 +12,7 @@ import com.googlecode.xmppremote.xmpp.XmppMsg;
  * XMPP Frontend command class for the alias feature This Class handles the
  * inserting/updating/deleting of aliases via XMPP Commands
  * 
- * @author Florian Schmaus fschmaus@gmail.com - on behalf of the GTalkSMS Team
+ * @author 
  * 
  */
 public class AliasCmd extends CommandHandlerBase {

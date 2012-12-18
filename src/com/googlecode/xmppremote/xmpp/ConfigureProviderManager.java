@@ -52,7 +52,7 @@ import com.googlecode.xmppremote.Log;
  * The full list of providers is at:
  * http://fisheye.igniterealtime.org/browse/smack/trunk/build/resources/META-INF/smack.providers?hb=true
  * 
- * @author Florian Schmaus fschmaus@gmail.com
+ * @author
  *
  */
 public class ConfigureProviderManager {

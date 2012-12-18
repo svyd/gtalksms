@@ -20,7 +20,6 @@ import android.content.Intent;
 import com.googlecode.xmppremote.MainService;
 import com.googlecode.xmppremote.SettingsManager;
 import com.googlecode.xmppremote.XmppManager;
-import com.googlecode.xmppremote.tools.GoogleAnalyticsHelper;
 
 public class XmppBuddies implements RosterListener {
     
@@ -98,7 +97,6 @@ public class XmppBuddies implements RosterListener {
 
                 sendFriendList(friends);
             } catch (Exception ex) {
-                GoogleAnalyticsHelper.trackAndLogWarning("Failed to retrieve Xmpp Friend list", ex);
             }
         }
         
@@ -135,7 +133,6 @@ public class XmppBuddies implements RosterListener {
         try {
             userStatus = sConnection.getRoster().getPresence(userID).getStatus();
         } catch (NullPointerException e) {
-            GoogleAnalyticsHelper.trackAndLogError("Invalid connection or user in retrieveStatus() - NPE");
             userStatus = "";
         }
         // Server may set their status to null; we want empty string
@@ -154,7 +151,6 @@ public class XmppBuddies implements RosterListener {
             userFromServer = sConnection.getRoster().getPresence(userID);
             userState = retrieveState(userFromServer.getMode(), userFromServer.isAvailable());
         } catch (NullPointerException e) {
-            GoogleAnalyticsHelper.trackAndLogError("retrieveState(): Invalid connection or user - NPE");
         }
 
         return userState;

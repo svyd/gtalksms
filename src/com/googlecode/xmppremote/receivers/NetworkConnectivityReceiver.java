@@ -31,14 +31,14 @@ public class NetworkConnectivityReceiver extends BroadcastReceiver {
         }
 
         if (prefs.getBoolean("startOnWifiConnected", false) && connected && networkType.equals("WIFI")) {
-            // Start GTalkSMS
+            // Start xmppremote
             if (debugLog) Log.d(Tools.LOG_TAG, "NetworkConnectivityReceiver: startOnWifiConnected enabled, wifi connected, sending intent");
             Intent net_changed = new Intent(MainService.ACTION_NETWORK_CHANGED);
             net_changed.putExtra("available", true);
             context.startService(net_changed);
             context.startService(new Intent(MainService.ACTION_CONNECT));
         } else if (prefs.getBoolean("stopOnWifiDisconnected", false) && !connected && networkType.equals("WIFI")) {            
-            // Stop GTalkSMS
+            // Stop xmppremote
             if (debugLog) Log.d(Tools.LOG_TAG, "NetworkConnectivityReceiver: stopOnWifiDisconnected enabled, wifi disconnected, sending intent");
             Intent serviceIntent = new Intent(MainService.ACTION_CONNECT);
             serviceIntent.putExtra("disconnect", true);

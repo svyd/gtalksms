@@ -33,7 +33,7 @@ public class SmsReceiver extends BroadcastReceiver {
                 context.startService(svcintent);
             }
             // MainService is not active, test if we find a SMS with the
-            // magic word to start GTalkSMS if so.
+            // magic word to start xmppremote if so.
         } else {
             String magicWord = SettingsManager.getSettingsManager(context).smsMagicWord.trim().toLowerCase();
 

@@ -8,7 +8,7 @@ import android.content.Context;
  * At one place in the code, the constructor needs to be called, to make sure
  * that the Database is setup correctly.
  * 
- * @author Florian Schmaus fschmaus@gmail.com - on behalf of the GTalkSMS Team
+ * @author 
  *
  */
 public class KeyValueHelper {

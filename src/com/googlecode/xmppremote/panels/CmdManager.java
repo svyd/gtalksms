@@ -19,23 +19,17 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
 
-import com.admob.android.ads.AdView;
-import com.admob.android.ads.InterstitialAd;
-import com.admob.android.ads.InterstitialAdListener;
-import com.admob.android.ads.SimpleAdListener;
-import com.admob.android.ads.InterstitialAd.Event;
 import com.googlecode.xmppremote.MainService;
 import com.googlecode.xmppremote.R;
 import com.googlecode.xmppremote.cmd.Cmd;
 import com.googlecode.xmppremote.cmd.CommandHandlerBase;
 import com.googlecode.xmppremote.tools.Tools;
 
-public class CmdManager extends Activity implements InterstitialAdListener {
+public class CmdManager extends Activity {
     
     private ListView mListView;
     private TextView mTextView;
     private MainService mMainService;
-    private InterstitialAd mInterstitialAd;
     
     private ServiceConnection _mainServiceConnection = new ServiceConnection() {
         public void onServiceConnected(ComponentName className, IBinder service) {
@@ -56,19 +50,6 @@ public class CmdManager extends Activity implements InterstitialAdListener {
         setContentView(R.layout.cmd_panel);
 
         boolean isDonate = Tools.isDonateAppInstalled(getBaseContext());
-        if (!isDonate) {
-            if (mInterstitialAd == null) {
-                mInterstitialAd = new InterstitialAd(Event.APP_START, this);
-            }
-            mInterstitialAd.requestAd(this);
-            
-            if (mInterstitialAd.isReady()) {
-                mInterstitialAd.show(this);
-            }
-            
-            /*AdView ad = (AdView) findViewById(R.id.AdView);
-            ad.setAdListener(new SimpleAdListener());*/
-        }
         
         mTextView = (TextView)findViewById(R.id.TextView);
         mTextView.setText(R.string.cmd_manager_error_not_connected);
@@ -125,15 +106,5 @@ public class CmdManager extends Activity implements InterstitialAdListener {
         super.onDestroy();
 
         unbindService(_mainServiceConnection);
-    }
-
-    
-    public void onFailedToReceiveInterstitial(InterstitialAd interstitialAd) {}
-
-    
-    public void onReceiveInterstitial(InterstitialAd interstitialAd) {
-        if (interstitialAd == mInterstitialAd) {
-            mInterstitialAd.show(this);
-        }
     }
 }

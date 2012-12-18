@@ -8,7 +8,7 @@ import android.database.Cursor;
  * Backend Class for the Key Value Database(s)
  * allows manipulation of the database
  * 
- * @author Florian Schmaus fschmaus@gmail.com - on behalf of the GTalkSMS Team
+ * @author 
  *
  */
 public class MUCDatabase extends Database {

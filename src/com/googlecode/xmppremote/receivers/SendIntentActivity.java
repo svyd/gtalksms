@@ -7,11 +7,6 @@ import android.os.Bundle;
 import com.googlecode.xmppremote.tools.Tools;
 import com.googlecode.xmppremote.xmpp.XmppMsg;
 
-/**
- * This is the 
- * @author Florian Schmaus fschmaus@gmail.com
- *
- */
 public class SendIntentActivity extends Activity {
 
     public void onCreate(Bundle savedInstanceState) {
