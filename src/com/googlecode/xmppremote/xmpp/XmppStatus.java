@@ -3,7 +3,6 @@ package com.googlecode.xmppremote.xmpp;
 import java.io.File;
 
 import com.googlecode.xmppremote.XmppManager;
-import com.googlecode.xmppremote.databases.KeyValueHelper;
 
 import android.content.Context;
 
@@ -21,13 +20,11 @@ public class XmppStatus {
     private static XmppStatus sXmppStatus;
     
     private File mStatefile;
-    private KeyValueHelper mKeyValueHelper;
     
     
     private XmppStatus(Context ctx) {
         File filesDir = ctx.getFilesDir();
         mStatefile = new File(filesDir, STATEFILE_NAME);
-        mKeyValueHelper = KeyValueHelper.getKeyValueHelper(ctx);
         // Delete the old statefile
         // TODO remove this check with a future release
         if (mStatefile.isFile()) {
@@ -50,13 +47,6 @@ public class XmppStatus {
      */
     public int getLastKnowState() {
         int res = XmppManager.DISCONNECTED;
-        String value = mKeyValueHelper.getValue(KeyValueHelper.KEY_XMPP_STATUS);
-        if (value != null) {
-            try {
-                res = Integer.parseInt(value);
-            } catch(NumberFormatException e) { 
-            }
-        }
         return res;        
     }
     
@@ -67,6 +57,5 @@ public class XmppStatus {
      */
     public void setState(int status) {
         String value = Integer.toString(status);
-        mKeyValueHelper.addKey(KeyValueHelper.KEY_XMPP_STATUS, value);
     }
 }

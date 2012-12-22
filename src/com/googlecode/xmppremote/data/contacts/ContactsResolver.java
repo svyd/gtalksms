@@ -3,10 +3,10 @@ package com.googlecode.xmppremote.data.contacts;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.googlecode.xmppremote.data.phone.Phone;
+
 import android.content.Context;
 
-import com.googlecode.xmppremote.data.phone.Phone;
-import com.googlecode.xmppremote.databases.AliasHelper;
 
 /**
  * This class provides the logic of resolving searchPatterns to phone numbers.
@@ -20,13 +20,11 @@ public class ContactsResolver {
     public static final int TYPE_ALL = 1;
     public static final int TYPE_CELL = 2;
     
-    private static AliasHelper sAliasHelper; 
     private static Context sContext;
     private static ContactsResolver sContactsResolver;
     
     private ContactsResolver(Context ctx) {
         sContext = ctx;
-        sAliasHelper = AliasHelper.getAliasHelper(ctx);
     }
     
     public static ContactsResolver getInstance(Context ctx) {
@@ -56,14 +54,6 @@ public class ContactsResolver {
      */
     public ResolvedContact resolveContact(String contactInformation, int searchType) {
         String resolvedName = contactInformation;
-        String number = sAliasHelper.convertAliasToNumber(contactInformation);
-        
-        // Best that can happen, we were able to resolve a distinct number via
-        // an alias
-        if (Phone.isCellPhoneNumber(number)) {
-            resolvedName = ContactsManager.getContactName(sContext, number);
-            return new ResolvedContact(resolvedName, number);
-        }              
         
         return resolveContactRec(contactInformation, searchType);
     }

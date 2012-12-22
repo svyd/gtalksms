@@ -37,7 +37,6 @@ import com.googlecode.xmppremote.MainService;
 import com.googlecode.xmppremote.R;
 import com.googlecode.xmppremote.SettingsManager;
 import com.googlecode.xmppremote.XmppManager;
-import com.googlecode.xmppremote.panels.wizard.Wizard;
 import com.googlecode.xmppremote.tools.StringFmt;
 import com.googlecode.xmppremote.tools.Tools;
 import com.googlecode.xmppremote.xmpp.XmppAccountManager;
@@ -322,15 +321,4 @@ public class MainScreen extends Activity {
         startActivity(intent);
         return true;
     }
-
-    @Override
-    public boolean onKeyLongPress(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK) {
-            Intent i = new Intent(this, LogCollector.class);
-            startActivity(i);
-            return true;
-        }
-        return super.onKeyLongPress(keyCode, event);
-    }
-
 }

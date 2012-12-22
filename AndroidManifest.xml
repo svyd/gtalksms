@@ -5,8 +5,6 @@
     android:versionName="0.9" 
     android:versionCode="1">
     <uses-sdk android:minSdkVersion="8" android:targetSdkVersion="17"/>
-    <uses-feature android:required="false" android:name="android.hardware.camera"></uses-feature>
-    <uses-feature android:required="false" android:name="android.hardware.camera.autofocus"></uses-feature>
     <uses-feature android:required="false" android:name="android.hardware.location"></uses-feature>
     <uses-feature android:required="false" android:name="android.hardware.location.gps"></uses-feature>
     <uses-feature android:required="false" android:name="android.hardware.bluetooth"></uses-feature>
@@ -27,9 +25,6 @@
         <activity android:name="com.googlecode.xmppremote.panels.GeoPopup"
                   android:label="@string/main_panel">
         </activity>
-        <activity android:name="com.googlecode.xmppremote.panels.wizard.Wizard"
-                  android:label="@string/wizard">
-        </activity>
         <activity android:name="com.googlecode.xmppremote.panels.CmdManager"
                   android:label="@string/cmd_manager">
         </activity>
@@ -39,7 +34,6 @@
         <activity android:name="com.googlecode.xmppremote.panels.About"
                   android:label="@string/about_panel">
         </activity>
-        <activity android:name="com.googlecode.xmppremote.panels.LogCollector"/>
         <service android:enabled="true" android:name="com.googlecode.xmppremote.MainService" android:exported="false">
             <intent-filter>
                 <action android:name="com.googlecode.xmppremote.action.CONNECT" />
@@ -54,15 +48,6 @@
                 <action android:name="com.googlecode.xmppremote.action.CONNECT" />
                 <action android:name="com.googlecode.xmppremote.action.TOGGLE" />
             </intent-filter>    
-        </receiver>
-        <receiver android:name="com.googlecode.xmppremote.WidgetProvider" >
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-                <action android:name="com.googlecode.xmppremote.action.XMPP.CONNECTION_CHANGED"/>
-                <action android:name="com.googlecode.xmppremote.action.widget.ACTION" />
-            </intent-filter>            
-            <meta-data android:name="android.appwidget.provider"
-                       android:resource="@xml/appwidget_info" />
         </receiver>
         <service android:enabled="true" android:name="com.googlecode.xmppremote.LocationService" android:exported="false" />
         <receiver android:name="com.googlecode.xmppremote.receivers.BootReceiver">
@@ -120,18 +105,14 @@
     </application>
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />    
-    <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
-    <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.READ_SMS" />
-    <uses-permission android:name="android.permission.WRITE_SMS" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.READ_LOGS" />
     <uses-permission android:name="android.permission.VIBRATE"/>
     <uses-permission android:name="android.permission.CALL_PHONE" /> <!-- For endCall() -->
     <uses-permission android:name="android.permission.WAKE_LOCK" />

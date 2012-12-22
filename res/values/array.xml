@@ -21,14 +21,10 @@
     </string-array>
     <string-array name="list_locale_entries">
 		<item>System Default</item>
-		<item>French</item>
-		<item>German</item>
 		<item>English</item>
 	</string-array>
     <string-array name="list_locale_entryValues">
         <item>default</item>
-        <item>fr</item>
-        <item>de</item>
         <item>en</item>
     </string-array>
     <string-array name="list_smsNotificationType_entries">
@@ -54,7 +50,6 @@
 	   <item>opt</item>
     </string-array>
     <string-array name="predefined_xmpp_servers">
-        <item>jabber.ccc.de</item>
-        <item>draugr.de</item>
+        <item>jabber.ru</item>
     </string-array>
 </resources>

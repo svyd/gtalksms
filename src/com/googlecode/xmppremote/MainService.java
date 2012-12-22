@@ -23,28 +23,15 @@ import android.os.Looper;
 import android.os.Message;
 import android.os.PowerManager;
 
-import com.googlecode.xmppremote.cmd.AliasCmd;
 import com.googlecode.xmppremote.cmd.BatteryCmd;
 import com.googlecode.xmppremote.cmd.BluetoothCmd;
-import com.googlecode.xmppremote.cmd.CallCmd;
-import com.googlecode.xmppremote.cmd.CameraCmd;
-import com.googlecode.xmppremote.cmd.ClipboardCmd;
 import com.googlecode.xmppremote.cmd.Cmd;
 import com.googlecode.xmppremote.cmd.CommandHandlerBase;
 import com.googlecode.xmppremote.cmd.ContactCmd;
 import com.googlecode.xmppremote.cmd.ExitCmd;
-import com.googlecode.xmppremote.cmd.FileCmd;
 import com.googlecode.xmppremote.cmd.GeoCmd;
 import com.googlecode.xmppremote.cmd.HelpCmd;
-import com.googlecode.xmppremote.cmd.KeyboardCmd;
-import com.googlecode.xmppremote.cmd.RebootCmd;
-import com.googlecode.xmppremote.cmd.RecipientCmd;
 import com.googlecode.xmppremote.cmd.RingCmd;
-import com.googlecode.xmppremote.cmd.ScreenShotCmd;
-import com.googlecode.xmppremote.cmd.SettingsCmd;
-import com.googlecode.xmppremote.cmd.ShellCmd;
-import com.googlecode.xmppremote.cmd.SmsCmd;
-import com.googlecode.xmppremote.cmd.SystemCmd;
 import com.googlecode.xmppremote.cmd.ToastCmd;
 import com.googlecode.xmppremote.cmd.UrlsCmd;
 import com.googlecode.xmppremote.cmd.WifiCmd;
@@ -53,7 +40,6 @@ import com.googlecode.xmppremote.panels.MainScreen;
 import com.googlecode.xmppremote.panels.Preferences;
 import com.googlecode.xmppremote.receivers.PublicIntentReceiver;
 import com.googlecode.xmppremote.receivers.StorageLowReceiver;
-import com.googlecode.xmppremote.tools.CrashedStartCounter;
 import com.googlecode.xmppremote.tools.DisplayToast;
 import com.googlecode.xmppremote.tools.Tools;
 import com.googlecode.xmppremote.xmpp.XmppBuddies;
@@ -102,7 +88,6 @@ public class MainService extends Service {
     private static XmppManager sXmppMgr;
     private static BroadcastReceiver sXmppConChangedReceiver;
     private static BroadcastReceiver sStorageLowReceiver;
-    private static KeyboardInputMethod sKeyboardInputMethod;
     private static PowerManager sPm;
     private static PowerManager.WakeLock sWl;
     private static PendingIntent sContentIntent = null;
@@ -382,7 +367,6 @@ public class MainService extends Service {
             if (lastStatus != currentStatus && lastStatus != XmppManager.DISCONNECTING) {
                 Log.i("onCreate(): issuing connect intent because we are on gingerbread (or higher). " + "lastStatus is " + lastStatus + " and currentStatus is " + currentStatus);
                 startService(new Intent(MainService.ACTION_CONNECT));
-                CrashedStartCounter.getInstance(this).count();
             }
         }
         
@@ -396,7 +380,6 @@ public class MainService extends Service {
             // we try to restart the connection
             // this null intent behavior is only for SDK < 9
             if (Build.VERSION.SDK_INT < Build.VERSION_CODES.GINGERBREAD) {
-                CrashedStartCounter.getInstance(this).count();
                 startService(new Intent(MainService.ACTION_CONNECT));
             } else 
             return START_STICKY;
@@ -476,14 +459,6 @@ public class MainService extends Service {
         if (sXmppMgr != null) {
             sXmppMgr.send(msg, to);
         } 
-    }
-
-    public void setKeyboard(KeyboardInputMethod keyboard) {
-        sKeyboardInputMethod = keyboard;
-    }
-
-    public KeyboardInputMethod getKeyboard() {
-        return sKeyboardInputMethod;
     }
 
     /**

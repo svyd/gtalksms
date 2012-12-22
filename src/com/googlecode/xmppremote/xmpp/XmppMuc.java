@@ -27,7 +27,6 @@ import com.googlecode.xmppremote.R;
 import com.googlecode.xmppremote.SettingsManager;
 import com.googlecode.xmppremote.XmppManager;
 import com.googlecode.xmppremote.data.contacts.ContactsManager;
-import com.googlecode.xmppremote.databases.MUCHelper;
 import com.googlecode.xmppremote.tools.Tools;
 
 public class XmppMuc {
@@ -47,14 +46,12 @@ public class XmppMuc {
     private SettingsManager mSettings;
     private XMPPConnection mConnection;
     private Random mRndGen = new Random();
-    private MUCHelper mMucHelper;
     private DiscussionHistory mDiscussionHistory;
     private String mMucServer;
     
     private XmppMuc(Context context) {
         mCtx = context;
         mSettings = SettingsManager.getSettingsManager(context);
-        mMucHelper = MUCHelper.getMUCHelper(context);
         mDiscussionHistory = new DiscussionHistory();
         // this should disable history replay on MUC rooms
         mDiscussionHistory.setMaxChars(0);        
@@ -297,68 +294,8 @@ public class XmppMuc {
     }
     
     private void rejoinRooms() {
-    	String[][] mucDB = mMucHelper.getAllMUC();
-    	if (mucDB == null)
     		return;
     		
-    	for (int i = 0; i < mucDB.length; i++) {
-    		RoomInfo info = getRoomInfo(mucDB[i][0]);
-    		// if info is not null, the room exists on the server
-    		// so lets check if we can reuse it
-			if (info != null) {
-				MultiUserChat muc = new MultiUserChat(mConnection, mucDB[i][0]);
-				String name = ContactsManager.getContactName(mCtx,
-						mucDB[i][1]);
-				try {
-					if (info.isPasswordProtected()) {
-						muc.join(name, mSettings.roomPassword, mDiscussionHistory, REPLAY_TIMEOUT);
-					} else {
-						muc.join(name, null, mDiscussionHistory, REPLAY_TIMEOUT);
-						// check here if we are still owner of these room, in case somebody has taken over ownership
-						// sadly this (getOwners()) throws sometimes a 403 on my openfire server
-						try {
-						if (!affilateCheck(muc.getOwners())) {
-							if (mSettings.debugLog) 
-								Log.i(Tools.LOG_TAG, "rejoinRooms: leaving " + muc.getRoom() + " because of affilateCheck failed");
-							leaveRoom(muc);
-							continue;
-						}
-						// catch the 403 that sometimes shows up and fall back to some easier check if the room
-						// is still under our control
-                        } catch (XMPPException e) {
-                            if (!(info.isMembersOnly() || info.isPasswordProtected())) {
-                                if (mSettings.debugLog)
-                                    Log.i(Tools.LOG_TAG, "rejoinRooms: leaving " + muc.getRoom() + " because of membersOnly=" 
-                                            + info.isMembersOnly() + " passwordProteced=" + info.isPasswordProtected());
-                                leaveRoom(muc);
-                                continue;
-                            }
-                        }
-					}
-					// looks like there is no one in the room
-					if (info.getOccupantsCount() > 0) {
-						if (mSettings.debugLog)
-							Log.i(Tools.LOG_TAG, "rejoinRooms: leaving " + muc.getRoom() + " because there is no one there");
-						leaveRoom(muc);
-						continue;
-					}
-				} catch (XMPPException e) {
-					if (mSettings.debugLog) {
-						Log.i(Tools.LOG_TAG, "rejoinRooms: leaving " + muc.getRoom() + " because of XMMPException", e);
-					}
-					// TODO decide in which cases it would be the best to remove the room from the db, because of a persistent error
-					// and in which cases the error will not be permanent
-					if (mConnection.isAuthenticated()) {
-						leaveRoom(muc);
-						continue;
-					} else {
-						break;
-					}
-				}
-				// muc has passed all tests and is fully usable
-				registerRoom(muc, mucDB[i][1], name);
-			}
-    	}
     }
     
     /**
@@ -367,15 +304,12 @@ public class XmppMuc {
      * @param muc
      */
     private void leaveRoom(MultiUserChat muc) {
-		mMucHelper.deleteMUC(muc.getRoom());
 		if (muc.isJoined())
 			muc.leave();
 
 		if (mRooms.size() > 0) {
 			Integer i = getRoomInt(muc.getRoom());
-			String number = mMucHelper.getNumber(muc.getRoom());
 			mRoomNumbers.remove(i);
-			mRooms.remove(number);
 		}
     }
     
@@ -393,7 +327,6 @@ public class XmppMuc {
         muc.addMessageListener(chatListener);
         mRoomNumbers.add(randomInt);
         mRooms.put(number, muc);
-        mMucHelper.addMUC(muc.getRoom(), number);
     }
     
     /**
