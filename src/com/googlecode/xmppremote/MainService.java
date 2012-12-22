@@ -664,7 +664,7 @@ public class MainService extends Service {
                 //KeyboardCmd.class,
                 BatteryCmd.class,
                 GeoCmd.class,
-                CallCmd.class,
+                //CallCmd.class,
                 ContactCmd.class,
                 //ShellCmd.class,
                 UrlsCmd.class,
